@@ -75,6 +75,28 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
     
+    // Protect portfolio image from copying/downloading
+    const heroImage = document.getElementById('heroImage');
+    if (heroImage) {
+        // Disable right-click context menu
+        heroImage.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable drag and drop
+        heroImage.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable selection
+        heroImage.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    }
+    
     // Intersection Observer for animations
     const observerOptions = {
         threshold: 0.1,
